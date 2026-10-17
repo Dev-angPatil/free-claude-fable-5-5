@@ -16,22 +16,7 @@ export const ProfileApplicationPage: React.FC<ProfileApplicationPageProps> = ({ 
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col justify-between p-6 sm:p-12 font-sans selection:bg-neutral-900 selection:text-white">
-      {/* Top Header */}
-      <header className="max-w-5xl mx-auto w-full flex flex-col sm:flex-row sm:items-center justify-between border-b border-neutral-200 pb-5 gap-4">
-        <div className="flex items-center space-x-3">
-          <div className="w-4 h-4 bg-neutral-900 rounded-sm"></div>
-          <span className="font-mono text-xs uppercase tracking-widest font-semibold text-neutral-900">
-            Anthropic // Labs Experimental
-          </span>
-        </div>
-        <div className="flex items-center space-x-4 text-xs font-mono text-neutral-600">
-          <span className="flex items-center gap-2 bg-neutral-100 border border-neutral-200 px-2.5 py-1 rounded-md">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            CLUSTER: US-EAST-FABLE
-          </span>
-          <span>LATENCY: 4ms</span>
-        </div>
-      </header>
+
 
       {/* Main Content Box */}
       <main className="max-w-2xl mx-auto my-auto w-full py-12">
