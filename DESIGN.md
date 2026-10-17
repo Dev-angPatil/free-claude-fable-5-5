@@ -1,42 +1,38 @@
-# Design System: Strict Monochrome Electric Volt
+# Design System: RawBlock Neo-Brutalist (Strict High-Contrast)
 
-Inspired by chef's `electric-volt` on designmd.ai, tuned for 100% strict black-and-white high-contrast minimalism without any color chromaticism.
+Adopted from `chef/rawblock` on [designmd.ai](https://designmd.ai/chef/rawblock).
 
-## 1. Palette & Surface Tokens
-- **Background (Primary Canvas)**: `#000000` (Pure OLED Black)
-- **Surface Level 1 (Panels / Modals)**: `#111111` (Deep Charcoal Surface)
-- **Surface Level 2 (Inputs / Cards)**: `#1A1A1A` (Elevated Panel)
-- **Surface Level 3 (Popovers / Toasts)**: `#222222` (High-Elevation Surface)
-- **Border Default**: `#2C2C2E` (Razor-thin 1px dark separator)
-- **Border Active / Focus**: `#FFFFFF` (Stark White 1px line)
-- **Border Muted**: `#1C1C1E` (Subtle boundary)
-- **Text Primary**: `#FFFFFF` (100% High-Contrast White)
-- **Text Secondary**: `#A0A0A0` (Neutral Spec Silver)
-- **Text Muted**: `#5C5E62` (Subdued Low-Emphasis Steel)
+## 1. Design Philosophy: Structural Anti-Design & Extreme Friction
+RawBlock strips interfaces down to their structural bones. There are no rounded corners (0px border-radius everywhere), no drop-shadows, and no decorative mid-tones. Visual hierarchy is achieved exclusively through **border weight (3px to 5px)**, **scale contrast**, and **high-impact typography**.
 
-## 2. Typography
-- **Primary Typeface**: `Inter` (weights: 200 Thin, 300 Light, 400 Regular, 600 Semi-Bold, 700 Bold)
-- **Monospace Typeface**: `JetBrains Mono` (weights: 400 Regular, 700 Bold) for security tokens, validation rules, code snippets, and entropy counters.
-- **Tracking & Hierarchy**:
-  - Hero Labels & Eyebrows: `tracking-[0.2em] uppercase text-xs font-semibold`
-  - Headlines: `tracking-tight font-light`
-  - Metric Values: `font-mono tracking-tight`
-  - Buttons: `uppercase tracking-[0.1em] text-xs font-medium`
+This raw, brutalist architectural aesthetic perfectly complements the uncompromising, hard psychological rage-bait nature of the Claude Fable 5.5 onboarding gauntlet.
 
-## 3. Elevation & Depth
-- Pure dark surfaces do not rely on drop shadows.
-- Depth is expressed solely through subtle surface contrast (`#000000` -> `#111111` -> `#1A1A1A`) and razor-thin `1px` borders in `#2C2C2E`.
-- Active focus states use hard `1px solid #FFFFFF` or inverted fills.
+## 2. Color Tokens
+- **Canvas / Background**: `#000000` (Pure Black)
+- **Inverted Canvas / Foreground**: `#FFFFFF` (Pure High-Contrast White)
+- **Surface Level 1**: `#111111` (Structural Block Fill)
+- **Surface Sunken**: `#181818` (Input Wells)
+- **Surface Elevated**: `#1E1E1E` (Active Directive Card)
+- **Borders**:
+  - `border-thin`: `1px solid #3A3A3C`
+  - `border-thick`: `3px solid #FFFFFF` (Standard element boundary)
+  - `border-heavy`: `5px solid #FFFFFF` (Active target focus & CTA)
+- **Text Primary**: `#FFFFFF`
+- **Text Secondary**: `#D1D5DB`
+- **Text Muted**: `#9CA3AF`
 
-## 4. Components & Interactive States
+## 3. Typography Scale & Fonts
+- **Headline Font**: `Archivo Black` (uppercase, ultra-bold, high authority)
+- **Mono Font**: `Space Mono` (15px, mechanical, cryptographic telemetry)
+- **Body Font**: `Work Sans` (14-16px, high-legibility clean grotesque)
+
+## 4. Component Rules
+- **Border Radius**: `0px` (`rounded-none`) across all cards, buttons, inputs, tags, and progress bars. Absolutely zero rounding.
 - **Buttons**:
-  - Primary: Solid `#FFFFFF` fill with `#000000` text, 44px height, 0px or 4px radius, uppercase tracking. Inverts to `#000000` with white border on hover.
-  - Secondary: `#111111` fill with 1px `#2C2C2E` border, `#FFFFFF` text.
+  - Primary: `#FFFFFF` fill with `#000000` text, `3px solid #FFFFFF` border, uppercase tracking. Inverts on hover to black fill with 5px white border.
+  - Secondary: `#181818` fill with `3px solid #3A3A3C` border, `#FFFFFF` text.
 - **Inputs**:
-  - Monospace font, `#111111` background, 1px `#2C2C2E` border.
-  - Focus: 1px `#FFFFFF` border, zero outer ring blur.
-  - Shake animation when invalid input or paste attempted.
-- **Rules Card**:
-  - `#111111` card surface with 1px `#2C2C2E` border.
-  - Pending/Failed: `#5C5E62` text with `[ ]` or `[×]` mono indicator.
-  - Satisfied: `#FFFFFF` text with `[✓]` inverted badge.
+  - `Space Mono` 16px font, `#181818` background, `3px solid #FFFFFF` focus border, 0px radius.
+- **Directives Panel**:
+  - High-visibility cards with 3px thick borders.
+  - Active Directive: `3px solid #FFFFFF` with inverted `[CURRENT OBJECTIVE]` badge and highlighted monospace hints.

@@ -9,16 +9,19 @@ export default {
       colors: {
         background: "#000000",
         surface: "#111111",
-        "surface-elevated": "#1a1a1a",
+        "surface-sunken": "#181818",
+        "surface-elevated": "#1e1e1e",
         border: "#2C2C2E",
-        "border-muted": "#1c1c1e",
+        "border-thick": "#FFFFFF",
+        "border-muted": "#3A3A3C",
         "text-primary": "#FFFFFF",
-        "text-secondary": "#A0A0A0",
-        "text-muted": "#5C5E62",
+        "text-secondary": "#D1D5DB",
+        "text-muted": "#9CA3AF",
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['"Work Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        headline: ['"Archivo Black"', 'sans-serif'],
+        mono: ['"Space Mono"', '"JetBrains Mono"', 'monospace'],
       },
       keyframes: {
         shake: {

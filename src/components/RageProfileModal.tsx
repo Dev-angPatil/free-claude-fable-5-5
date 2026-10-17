@@ -72,7 +72,6 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
     }
     const finalCount = Math.min(nextCount, RULES.length);
     if (finalCount > unlockedCount) {
-      // Auto-scroll rule list to show newly unlocked rule
       setTimeout(() => {
         if (rulesContainerRef.current) {
           rulesContainerRef.current.scrollTop = rulesContainerRef.current.scrollHeight;
@@ -152,24 +151,23 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
       <ToastAlert message={toastMessage} onClose={() => setToastMessage(null)} />
 
       {/* Top Header */}
-      <header className="max-w-7xl mx-auto w-full flex items-center justify-between border-b border-[#2C2C2E] pb-4 mb-6">
+      <header className="max-w-7xl mx-auto w-full flex items-center justify-between border-b-[3px] border-white pb-4 mb-8">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-neutral-300 hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-300 hover:text-white transition-colors"
         >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Abort Session</span>
+          <ArrowLeft className="w-4 h-4 stroke-[3]" />
+          <span className="font-bold">ABORT SESSION</span>
         </button>
 
         <div className="flex items-center gap-4 font-mono text-xs text-neutral-300">
-          <span className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+          <span className="flex items-center gap-2 bg-black px-3 py-1 border-[2px] border-white font-bold text-white">
+            <span className="w-2 h-2 bg-white animate-pulse"></span>
             ACTIVE SESSION
           </span>
-          <span className="text-[#3A3A3C]">|</span>
-          <span className="flex items-center gap-1.5 bg-[#161616] px-2.5 py-1 border border-[#2C2C2E]">
-            <Clock className="w-3.5 h-3.5 text-white" />
-            UTC MINUTE: <strong className="text-white font-bold">{ruleContext.currentUtcMinute}</strong>
+          <span className="flex items-center gap-1.5 bg-[#181818] px-3 py-1 border-[2px] border-white font-bold text-white">
+            <Clock className="w-4 h-4 text-white stroke-[2.5]" />
+            UTC MINUTE: <strong className="text-white underline decoration-2">{ruleContext.currentUtcMinute}</strong>
           </span>
         </div>
       </header>
@@ -179,24 +177,24 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Middle Column: Registration Profile & Password (7 Cols on desktop) */}
-          <div className="lg:col-span-7 bg-[#111111] border-2 border-[#2C2C2E] p-6 sm:p-8 shadow-2xl">
+          <div className="lg:col-span-7 bg-[#111111] border-[4px] border-white p-6 sm:p-8">
             {/* Header info */}
-            <div className="flex items-center justify-between border-b border-[#2C2C2E] pb-5 mb-6">
+            <div className="flex items-center justify-between border-b-[3px] border-white pb-5 mb-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-white text-black">
-                  <Terminal className="w-5 h-5" />
+                <div className="p-2.5 bg-white text-black">
+                  <Terminal className="w-6 h-6 stroke-[3]" />
                 </div>
                 <div>
-                  <h1 className="text-base sm:text-lg font-mono uppercase tracking-[0.15em] font-bold text-white">
-                    Fable 5.5 Onboarding Portal
+                  <h1 className="text-lg sm:text-xl font-headline uppercase tracking-wider text-white">
+                    Fable 5.5 Onboarding Vault
                   </h1>
-                  <p className="text-xs text-neutral-400 font-mono mt-0.5">
+                  <p className="text-xs text-neutral-300 font-mono mt-0.5">
                     Register developer credentials & cryptographic passphrase.
                   </p>
                 </div>
               </div>
-              <span className="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase px-2.5 py-1 bg-white text-black font-bold">
-                ROOT CREDENTIALS
+              <span className="hidden sm:inline-block text-xs font-headline tracking-widest uppercase px-3 py-1 bg-white text-black">
+                ROOT TIER
               </span>
             </div>
 
@@ -204,28 +202,28 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
               {/* Identity Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-widest text-neutral-300 mb-2 font-semibold">
+                  <label className="block text-xs font-mono uppercase tracking-widest text-neutral-200 mb-2 font-bold">
                     Developer Handle
                   </label>
                   <input
                     type="text"
                     value={handle}
                     onChange={(e) => setHandle(e.target.value)}
-                    className="w-full bg-[#181818] border border-[#3A3A3C] focus:border-white px-4 py-3 text-sm font-mono text-white outline-none transition-colors"
+                    className="w-full bg-[#181818] border-[3px] border-neutral-700 focus:border-white px-4 py-3 text-sm font-mono text-white outline-none transition-colors rounded-none"
                     placeholder="e.g. quantum_engineer"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-widest text-neutral-300 mb-2 font-semibold">
+                  <label className="block text-xs font-mono uppercase tracking-widest text-neutral-200 mb-2 font-bold">
                     Research Organization
                   </label>
                   <input
                     type="text"
                     value={organization}
                     onChange={(e) => setOrganization(e.target.value)}
-                    className="w-full bg-[#181818] border border-[#3A3A3C] focus:border-white px-4 py-3 text-sm font-mono text-white outline-none transition-colors"
+                    className="w-full bg-[#181818] border-[3px] border-neutral-700 focus:border-white px-4 py-3 text-sm font-mono text-white outline-none transition-colors rounded-none"
                     placeholder="e.g. Autonomous AI Labs"
                     required
                   />
@@ -237,16 +235,16 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
                 <div className="flex items-center justify-between mb-2.5">
                   <label className="text-xs font-mono uppercase tracking-widest text-white font-bold flex items-center gap-2">
                     <span>Master Security Passphrase</span>
-                    <span className="text-[10px] text-neutral-400 font-normal">
+                    <span className="text-[11px] text-neutral-400 font-normal">
                       (50+ Chars Required)
                     </span>
                   </label>
                   
                   <div className="flex items-center gap-4 font-mono text-xs">
-                    <span className={`px-2 py-0.5 border ${
+                    <span className={`px-2.5 py-1 border-[2px] font-bold ${
                       password.length >= 50 
-                        ? 'border-white bg-white text-black font-bold' 
-                        : 'border-[#3A3A3C] text-neutral-300 bg-[#161616]'
+                        ? 'border-white bg-white text-black' 
+                        : 'border-neutral-600 text-neutral-200 bg-[#181818]'
                     }`}>
                       CHARS: <strong>{password.length}</strong> / 50
                     </span>
@@ -254,11 +252,11 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="text-neutral-400 hover:text-white transition-colors flex items-center gap-1"
+                      className="text-neutral-300 hover:text-white transition-colors flex items-center gap-1 font-bold"
                       title={showPassword ? "Hide" : "Show"}
                     >
-                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                      <span className="text-[10px] uppercase font-mono">{showPassword ? "Hide" : "Show"}</span>
+                      {showPassword ? <EyeOff className="w-4 h-4 stroke-[2.5]" /> : <Eye className="w-4 h-4 stroke-[2.5]" />}
+                      <span className="text-[11px] uppercase font-mono">{showPassword ? "Hide" : "Show"}</span>
                     </button>
                   </div>
                 </div>
@@ -273,34 +271,36 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
                     onPaste={handlePaste}
                     onDrop={handleDrop}
                     placeholder="Type password manually (Paste disabled by security)..."
-                    className={`w-full bg-[#161616] border-2 ${
-                      isShaking ? 'border-white bg-[#222222]' : 'border-[#3A3A3C]'
-                    } focus:border-white px-4 py-4 text-base font-mono text-white outline-none transition-all placeholder:text-neutral-600`}
+                    className={`w-full bg-[#181818] border-[3px] ${
+                      isShaking ? 'border-white bg-[#282828]' : 'border-neutral-500'
+                    } focus:border-white px-4 py-4 text-base font-mono text-white outline-none transition-all placeholder:text-neutral-600 rounded-none`}
                     autoComplete="off"
                     spellCheck={false}
                   />
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                    <span className="text-[10px] font-mono uppercase bg-[#2C2C2E] border border-[#3A3A3C] text-neutral-300 px-2 py-1 font-bold">
+                    <span className="text-[11px] font-mono uppercase bg-white text-black px-2 py-0.5 font-bold">
                       NO PASTE
                     </span>
                   </div>
                 </div>
 
                 {/* Live Entropy Bar & Gaslighting Feedback */}
-                <div className="mt-5 p-4 bg-[#161616] border border-[#2C2C2E]">
+                <div className="mt-5 p-4 bg-[#181818] border-[3px] border-neutral-700">
                   <div className="flex items-center justify-between text-xs font-mono mb-2">
-                    <span className="text-neutral-300 uppercase tracking-wider font-semibold">
+                    <span className="text-neutral-200 uppercase tracking-widest font-bold">
                       Passphrase Cryptographic Entropy
                     </span>
-                    <span className="text-white font-bold text-sm">{entropyPercentage}%</span>
+                    <span className="text-white font-bold text-sm bg-black px-2 py-0.5 border border-white">
+                      {entropyPercentage}%
+                    </span>
                   </div>
-                  <div className="w-full h-2 bg-black border border-[#3A3A3C] overflow-hidden">
+                  <div className="w-full h-3 bg-black border-[2px] border-white overflow-hidden">
                     <div
                       className="h-full bg-white transition-all duration-300 ease-out"
                       style={{ width: `${entropyPercentage}%` }}
                     ></div>
                   </div>
-                  <div className="mt-2.5 text-xs font-mono text-neutral-200 bg-black/60 p-2.5 border border-[#2C2C2E]">
+                  <div className="mt-3 text-xs font-mono text-neutral-100 bg-black p-3 border-[2px] border-white/50">
                     &gt; <strong className="text-white">{gaslightFeedback}</strong>
                   </div>
                 </div>
@@ -311,20 +311,20 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
                 <button
                   type="submit"
                   disabled={isVerifying}
-                  className={`w-full py-4 text-xs font-mono uppercase tracking-[0.2em] font-bold transition-all flex items-center justify-center gap-3 border-2 ${
+                  className={`w-full py-5 text-xs font-headline uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3 border-[3px] rounded-none ${
                     allPassed
-                      ? 'bg-white text-black border-white hover:bg-neutral-200 cursor-pointer shadow-2xl scale-[1.01]'
-                      : 'bg-[#181818] text-neutral-500 border-[#2C2C2E] cursor-not-allowed hover:border-neutral-500'
+                      ? 'bg-white text-black border-white hover:bg-black hover:text-white hover:border-[4px] cursor-pointer'
+                      : 'bg-[#181818] text-neutral-500 border-neutral-700 cursor-not-allowed hover:border-neutral-500'
                   }`}
                 >
                   {isVerifying ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin text-white" />
+                      <Loader2 className="w-5 h-5 animate-spin text-white" />
                       <span>Verifying Cryptographic Handshake...</span>
                     </>
                   ) : allPassed ? (
                     <>
-                      <ShieldAlert className="w-4 h-4 text-black" />
+                      <ShieldAlert className="w-5 h-5 text-black stroke-[3]" />
                       <span>Commit Profile & Generate Claude Fable 5.5 Key</span>
                     </>
                   ) : (
@@ -338,21 +338,21 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
           </div>
 
           {/* Right Column: Progressive Rules Panel (5 Cols on desktop) */}
-          <div className="lg:col-span-5 bg-[#111111] border-2 border-[#2C2C2E] p-5 sm:p-6 shadow-2xl flex flex-col h-full lg:sticky lg:top-8">
+          <div className="lg:col-span-5 bg-[#111111] border-[4px] border-white p-5 sm:p-6 flex flex-col h-full lg:sticky lg:top-8">
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-[#2C2C2E] pb-4 mb-4">
+            <div className="flex items-center justify-between border-b-[3px] border-white pb-4 mb-4">
               <div>
-                <h2 className="text-sm font-mono uppercase tracking-[0.15em] font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-white" />
+                <h2 className="text-sm font-headline uppercase tracking-wider text-white flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-white stroke-[2.5]" />
                   <span>Security Directives</span>
                 </h2>
-                <p className="text-xs text-neutral-400 font-mono mt-0.5">
-                  Directives unlock as earlier conditions are fulfilled.
+                <p className="text-xs text-neutral-300 font-mono mt-0.5">
+                  Directives unlock sequentially as preceding rules pass.
                 </p>
               </div>
 
               <div className="text-right">
-                <div className="text-xs font-mono font-bold text-white px-2 py-1 bg-black border border-[#3A3A3C]">
+                <div className="text-xs font-mono font-bold text-black px-2.5 py-1 bg-white border-[2px] border-white">
                   {passedCount} / {RULES.length}
                 </div>
               </div>
@@ -361,7 +361,7 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
             {/* Rules List Container with custom scroll */}
             <div
               ref={rulesContainerRef}
-              className="space-y-3 max-h-[580px] overflow-y-auto pr-1"
+              className="space-y-3.5 max-h-[580px] overflow-y-auto pr-1"
             >
               {visibleRules.map((rule, idx) => {
                 const isCurrentActive = idx === unlockedCount - 1 && !rule.passed;
@@ -369,29 +369,29 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
                 return (
                   <div
                     key={rule.id}
-                    className={`p-4 border-2 transition-all font-mono text-xs ${
+                    className={`p-4 border-[3px] transition-all font-mono text-xs ${
                       rule.passed
-                        ? 'bg-[#141414] border-[#2C2C2E] text-neutral-400'
+                        ? 'bg-[#141414] border-neutral-700 text-neutral-400'
                         : isCurrentActive
-                        ? 'bg-[#1C1C1E] border-white text-white shadow-xl ring-1 ring-white/30'
-                        : 'bg-[#141414] border-[#3A3A3C] text-neutral-300'
+                        ? 'bg-black border-white text-white ring-2 ring-white/50'
+                        : 'bg-[#181818] border-neutral-600 text-neutral-300'
                     }`}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <span className={`px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase ${
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className={`px-2 py-0.5 text-[10px] font-bold tracking-widest uppercase ${
                             rule.passed
                               ? 'bg-[#222222] text-neutral-400'
                               : isCurrentActive
                               ? 'bg-white text-black'
-                              : 'bg-[#2A2A2E] text-white'
+                              : 'bg-neutral-800 text-white'
                           }`}>
                             RULE {rule.id}
                           </span>
 
                           {isCurrentActive && (
-                            <span className="text-[10px] tracking-wider text-white font-bold animate-pulse">
+                            <span className="text-[10px] tracking-wider text-white font-bold bg-neutral-900 border border-white px-1.5 py-0.5 animate-pulse">
                               [CURRENT OBJECTIVE]
                             </span>
                           )}
@@ -401,17 +401,17 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
                           {rule.label}
                         </div>
 
-                        <p className={`mt-1.5 leading-relaxed font-sans text-xs ${
+                        <p className={`mt-2 leading-relaxed font-sans text-xs ${
                           rule.passed ? 'text-neutral-400' : 'text-neutral-200'
                         }`}>
                           {rule.description}
                         </p>
 
                         {rule.hint && (
-                          <div className={`mt-2 p-2 border font-mono text-[11px] ${
+                          <div className={`mt-2.5 p-2.5 border-[2px] font-mono text-[11px] ${
                             isCurrentActive 
-                              ? 'bg-black border-white/40 text-neutral-100' 
-                              : 'bg-black/50 border-[#2C2C2E] text-neutral-400'
+                              ? 'bg-[#181818] border-white text-neutral-100' 
+                              : 'bg-black border-neutral-700 text-neutral-400'
                           }`}>
                             ↳ {rule.hint(password, ruleContext)}
                           </div>
@@ -421,16 +421,16 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
                       {/* Status Icon */}
                       <div className="shrink-0 mt-0.5">
                         {rule.passed ? (
-                          <span className="inline-flex items-center justify-center w-6 h-6 bg-white text-black font-bold">
-                            <Check className="w-4 h-4 stroke-[3]" />
+                          <span className="inline-flex items-center justify-center w-7 h-7 bg-white text-black font-bold">
+                            <Check className="w-5 h-5 stroke-[3.5]" />
                           </span>
                         ) : (
-                          <span className={`inline-flex items-center justify-center w-6 h-6 border-2 ${
+                          <span className={`inline-flex items-center justify-center w-7 h-7 border-[2px] ${
                             isCurrentActive 
                               ? 'border-white text-white' 
-                              : 'border-[#5C5E62] text-[#5C5E62]'
+                              : 'border-neutral-600 text-neutral-600'
                           }`}>
-                            <X className="w-4 h-4 stroke-[2.5]" />
+                            <X className="w-5 h-5 stroke-[3]" />
                           </span>
                         )}
                       </div>
@@ -441,14 +441,14 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
 
               {/* Teaser for remaining locked rules */}
               {unlockedCount < RULES.length && (
-                <div className="p-3.5 border border-dashed border-[#2C2C2E] bg-black/40 text-neutral-500 font-mono text-xs flex items-center justify-between">
+                <div className="p-4 border-[2px] border-dashed border-neutral-700 bg-black/60 text-neutral-400 font-mono text-xs flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Lock className="w-3.5 h-3.5 text-neutral-600" />
+                    <Lock className="w-4 h-4 text-neutral-500 stroke-[2.5]" />
                     <span>
                       Directive {unlockedCount + 1} locked pending Rule {unlockedCount}
                     </span>
                   </div>
-                  <span className="text-[10px] uppercase tracking-wider text-neutral-600">
+                  <span className="text-[10px] uppercase tracking-wider text-neutral-400 font-bold">
                     +{RULES.length - unlockedCount} more
                   </span>
                 </div>
@@ -456,9 +456,9 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
             </div>
 
             {/* Directive Footer Summary */}
-            <div className="mt-4 pt-3 border-t border-[#2C2C2E] flex items-center justify-between text-[11px] font-mono text-neutral-400">
-              <span>ACTIVE DIRECTIVES: {unlockedCount} / {RULES.length}</span>
-              <span>COMPLIANCE: {Math.round((passedCount / RULES.length) * 100)}%</span>
+            <div className="mt-4 pt-3 border-t-[2px] border-white flex items-center justify-between text-xs font-mono text-neutral-300">
+              <span>ACTIVE DIRECTIVES: <strong>{unlockedCount} / {RULES.length}</strong></span>
+              <span>COMPLIANCE: <strong>{Math.round((passedCount / RULES.length) * 100)}%</strong></span>
             </div>
           </div>
 
@@ -467,15 +467,15 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
         {/* Verification Modal / Overlay during submit */}
         {isVerifying && (
           <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div className="bg-[#111111] border-2 border-white max-w-md w-full p-8 font-mono text-xs text-white text-center shadow-2xl">
-              <div className="w-12 h-12 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
-              <div className="uppercase tracking-[0.2em] font-bold text-sm mb-2">
+            <div className="bg-[#111111] border-[4px] border-white max-w-md w-full p-8 font-mono text-xs text-white text-center">
+              <div className="w-12 h-12 border-[3px] border-white border-t-transparent animate-spin mx-auto mb-6"></div>
+              <div className="uppercase tracking-[0.2em] font-headline text-base mb-2">
                 QUANTUM DERIVATION IN PROGRESS
               </div>
               <p className="text-neutral-300 mb-6 font-sans">
                 Please do not disconnect. Transmitting cryptographic handshake to Anthropic clusters...
               </p>
-              <div className="p-3 bg-black border border-[#2C2C2E] text-left text-neutral-200">
+              <div className="p-3 bg-black border-[2px] border-white text-left text-neutral-200">
                 &gt; {["Calculating RSA salt...", "Negotiating TLS handshake...", "Allocating KV-cache...", "Syncing UTC minutes..."][verifyStep]}
               </div>
             </div>
@@ -484,9 +484,9 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({ onBack, onSu
       </main>
 
       {/* Footer */}
-      <footer className="max-w-7xl mx-auto w-full border-t border-[#2C2C2E] pt-4 mt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-neutral-400 gap-2">
-        <div>SECURITY ENFORCEMENT ENGINE // ELECTRIC VOLT MONOCHROME</div>
-        <div className="font-bold text-white">CLIPBOARD INJECTION PROHIBITED</div>
+      <footer className="max-w-7xl mx-auto w-full border-t-[3px] border-white pt-4 mt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-neutral-300 gap-2">
+        <div className="font-bold">SECURITY ENFORCEMENT ENGINE // RAWBLOCK NEO-BRUTALIST</div>
+        <div className="bg-white text-black px-2 py-0.5 font-bold">CLIPBOARD INJECTION PROHIBITED</div>
       </footer>
     </div>
   );
