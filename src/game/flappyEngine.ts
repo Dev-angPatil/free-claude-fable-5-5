@@ -292,14 +292,16 @@ export class FlappyEngine {
           }
         }
 
-        // Collision detection (AABB)
-        const birdLeft = this.bird.x - this.bird.width / 2 + 4;
-        const birdRight = this.bird.x + this.bird.width / 2 - 4;
-        const birdTop = this.bird.y - this.bird.height / 2 + 4;
-        const birdBottom = this.bird.y + this.bird.height / 2 - 4;
+        // Collision detection (Forgiving AABB Hitbox - smaller than visual sprite)
+        const hitboxInsetX = 9; // Inset 9px from left and right
+        const hitboxInsetY = 7; // Inset 7px from top and bottom
+        const birdLeft = this.bird.x - this.bird.width / 2 + hitboxInsetX;
+        const birdRight = this.bird.x + this.bird.width / 2 - hitboxInsetX;
+        const birdTop = this.bird.y - this.bird.height / 2 + hitboxInsetY;
+        const birdBottom = this.bird.y + this.bird.height / 2 - hitboxInsetY;
 
-        const pipeLeft = pipe.x;
-        const pipeRight = pipe.x + this.pipeWidth;
+        const pipeLeft = pipe.x + 2; // Forgiving 2px pipe margin
+        const pipeRight = pipe.x + this.pipeWidth - 2;
 
         // Inside horizontal pipe slice
         if (birdRight > pipeLeft && birdLeft < pipeRight) {
@@ -319,9 +321,9 @@ export class FlappyEngine {
       // Remove offscreen pipes
       this.pipes = this.pipes.filter((p) => p.x + this.pipeWidth > -50);
 
-      // Floor & ceiling collisions
-      if (this.bird.y + this.bird.height / 2 >= this.height - 12) {
-        this.bird.y = this.height - 12 - this.bird.height / 2;
+      // Floor & ceiling collisions (with forgiving inset)
+      if (this.bird.y + this.bird.height / 2 - 6 >= this.height - 12) {
+        this.bird.y = this.height - 12 - (this.bird.height / 2 - 6);
         this.triggerCrash();
         return;
       }
