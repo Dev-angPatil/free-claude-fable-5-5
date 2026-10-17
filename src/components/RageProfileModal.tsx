@@ -97,9 +97,9 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({
   const passedRulesCount = ruleStatuses.filter((r) => r.passed).length;
 
   // Top-of-screen Boss Interruption Auto-Trigger
-  // Fires when user has satisfied 6 or 7 rules (passedRulesCount >= 6) while boss is idle
+  // Fires when user has satisfied Rule 9 (passedRulesCount >= 9) while boss is idle
   useEffect(() => {
-    if (passedRulesCount >= 6 && !hasTriggeredBossRef.current && bossStage === 'idle') {
+    if (passedRulesCount >= 9 && !hasTriggeredBossRef.current && bossStage === 'idle') {
       hasTriggeredBossRef.current = true;
       const timeout = setTimeout(() => {
         setBossStage('guy_standing');

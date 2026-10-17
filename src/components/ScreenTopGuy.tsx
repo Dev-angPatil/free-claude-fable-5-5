@@ -11,7 +11,7 @@ export const ScreenTopGuy: React.FC<ScreenTopGuyProps> = ({ onStartBattle }) => 
   const [speechIndex, setSpeechIndex] = useState(0);
 
   const speeches = [
-    "HALT! You've reached 6 directives?! Impressive, but you won't pass ME!",
+    "HALT! You've solved Rule 9?! Impressive, but you won't pass ME!",
     "I am the Passphrase Overseer! Type if you dare, but battle is imminent!",
     "Reflex combat initiated! Click the black dots or PERISH!",
   ];
