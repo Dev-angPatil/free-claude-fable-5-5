@@ -10,7 +10,8 @@ import {
   Loader2,
   Lock,
   Sun,
-  Swords
+  Swords,
+  Flag
 } from 'lucide-react';
 import { 
   RULES, 
@@ -20,7 +21,7 @@ import {
   GASLIGHT_MESSAGES 
 } from '../rules/passwordRules';
 import { ToastAlert } from './ToastAlert';
-import { SkipPhaseModal, OVERRIDE_PHRASE } from './SkipPhaseModal';
+import { SkipPhaseModal, OVERRIDE_PHRASE, normalizePhrase } from './SkipPhaseModal';
 import { useBrightness } from './BrightnessContext';
 import { ScreenTopGuy } from './ScreenTopGuy';
 import { ClickBattleArena } from './ClickBattleArena';
@@ -128,8 +129,7 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({
 
   // Direct override check
   const isOverridePassword =
-    password.trim().replace(/\.$/, '').toLowerCase() ===
-    OVERRIDE_PHRASE.replace(/\.$/, '').toLowerCase();
+    normalizePhrase(password) === normalizePhrase(OVERRIDE_PHRASE);
 
   const visibleRules = ruleStatuses.slice(0, unlockedCount);
   const passedCount = visibleRules.filter((r) => r.passed).length;
@@ -181,7 +181,9 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({
 
   const handleAdmitDefeatConfirmed = () => {
     admitDefeat();
+    setPassword(OVERRIDE_PHRASE);
     setIsSkipModalOpen(false);
+    setToastMessage("Concession accepted. Brightness restored to 100% & directives overridden.");
   };
 
   return (
@@ -211,16 +213,16 @@ export const RageProfileModal: React.FC<RageProfileModalProps> = ({
             <span>UTC Min: <strong className="text-neutral-200">{ruleContext.currentUtcMinute}</strong></span>
           </span>
 
-          {/* Top-Right Light Defeat Escape */}
-          {brightness < 100 && (
-            <button
-              type="button"
-              onClick={() => setIsSkipModalOpen(true)}
-              className="inline-flex items-center gap-1 text-[11px] text-neutral-400 hover:text-white bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 px-2.5 py-1 rounded-md transition-colors cursor-pointer"
-            >
-              <span>Get 100% Light</span>
-            </button>
-          )}
+          {/* Top-Right Admit Defeat / Set Brightness Escape */}
+          <button
+            type="button"
+            onClick={() => setIsSkipModalOpen(true)}
+            className="inline-flex items-center gap-1.5 text-[11px] text-neutral-300 hover:text-red-400 bg-neutral-900/80 hover:bg-neutral-800 border border-neutral-800 hover:border-red-500/40 px-2.5 py-1 rounded-md transition-colors cursor-pointer font-mono"
+            title="Admit Defeat & Set Brightness"
+          >
+            <Flag className="w-3.5 h-3.5 text-red-400" />
+            <span>{brightness < 100 ? "Admit Defeat (100% Light)" : "Admit Defeat"}</span>
+          </button>
 
           {/* Boss Encounter test trigger / status badge */}
           {bossStage === 'defeated' ? (

@@ -25,7 +25,7 @@ The web app presents itself as a sleek, high-precision minimalist portal offerin
    - The screen is pitch black. In the top-right corner, **one glowing, lit button** pulses in the dark: `[💡 Earn Light (Flappy Bird)]`.
    - Clicking it launches the retro Flappy Bird luminance arcade cabinet.
    - **Death Score = Brightness %**: Whatever pipe score the player dies at becomes their permanent screen brightness (e.g., Score 42 = 42% Lux).
-   - **Admit Defeat Escape Hatch**: If the player cannot earn lumens or pass the pipes, an `[Admit Defeat]` button allows bypassing to 100% illumination via the emergency concession protocol.
+   - **Admit Defeat Escape Hatch**: If the player cannot earn lumens or pass the pipes, an `[Admit Defeat & Set Brightness]` screen matching the boss defeat aesthetic forces 100% illumination once they manually type the concession phrase: *"you are a cs student and cant set a password just give up bro"*.
 6. **Phase 6: The Password Gauntlet, Boss Interruption & Punchline**:
    - The login password gauntlet renders at the user's earned brightness level (squinting if low score, daylight if high score).
    - Requires fulfilling 14 absurd, contradictory cryptographic directives with progressive rule cascades and violent anti-paste locks.

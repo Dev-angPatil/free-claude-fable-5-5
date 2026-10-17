@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lightbulb, Sun, Gamepad2, Flag } from 'lucide-react';
+import { Lightbulb, Gamepad2, Flag } from 'lucide-react';
 import { useBrightness } from './BrightnessContext';
 import { FlappyBrightnessModal } from './FlappyBrightnessModal';
 import { SkipPhaseModal } from './SkipPhaseModal';
@@ -77,7 +77,7 @@ export const DarknessPhase: React.FC<DarknessPhaseProps> = ({ onProceedToPasswor
       {/* Flappy Bird Arcade Modal */}
       <FlappyBrightnessModal
         onProceedWithBrightness={handleEarnedBrightness}
-        onAdmitDefeat={handleAdmitDefeatConfirmed}
+        onAdmitDefeat={() => setIsAdmitModalOpen(true)}
       />
 
       {/* Admit Defeat / Skip Modal */}

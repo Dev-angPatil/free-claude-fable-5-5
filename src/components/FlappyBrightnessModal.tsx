@@ -96,10 +96,11 @@ export const FlappyBrightnessModal: React.FC<FlappyBrightnessModalProps> = ({
   };
 
   const handleDefeat = () => {
-    admitDefeat();
     closeGame();
     if (onAdmitDefeat) {
       onAdmitDefeat();
+    } else {
+      admitDefeat();
     }
   };
 
