@@ -3,34 +3,43 @@
 ## 1. Product Vision
 *FREE CLAUDE FABLE 5.5 UNLIMITED* is a psychological satire web application designed to capitalize on AI-hype FOMO and expose the developer struggle through a dark-humor gauntlet of impossible security hurdles and hardware-level cognitive traps.
 
-The web app presents itself as a stark, minimalist portal offering an ultra-exclusive release of Anthropic's mythical "Claude 5.5 Fable" model with unlimited developer compute.
+The web app presents itself as a sleek, high-precision minimalist portal offering an ultra-exclusive release of Anthropic's mythical "Claude 5.5 Fable" model with unlimited developer compute.
 
-## 2. Target User Experience
-1. **The Bait**: The user arrives at an innocent, clean, pure-white page featuring a sleek notification banner: *"CLAUDE 5.5 FABLE MODEL RELEASE // UNLIMITED RESEARCH TOKENS GRANTED"*. An irresistible `[Get Unlimited Access]` button beckons.
-2. **The Turn**: Clicking triggers an ominous screen flash and terminal handshake, pulling the user into an intimidating OLED-black monolithic terminal modal.
-3. **The Gauntlet (Rage Loop)**:
-   - To claim access, the user must create their developer credentials.
-   - The security passphrase validator requires an absurd **50-digit/character password**.
-   - Rules are revealed progressively, one-by-one.
-   - Contradictory constraints sabotage the user:
-     - No repeated 2-character tokens.
-     - No number may directly follow any letter.
-     - Digits must sum to an exact prime number.
-     - Must include today's Roman numeral calendar date.
-     - Must include the atomic symbol of an alkali metal.
-     - Must include the current UTC minute (causing the password to expire if the user takes longer than 60 seconds!).
-   - **Anti-Paste Lock**: Attempting to paste text from the clipboard is immediately blocked, violently shakes the input, and insults the user.
-   - **Gaslighting Entropy Bar**: The security confidence bar perpetually hovers near 0% and questions the user's intelligence.
-4. **The Hardware Luminance Trap (Flappy Brightness)**:
-   - The entire website launches clamped to a gloomy 10% brightness (`filter: brightness(0.10)`).
-   - Any attempt to increase brightness via top-level quick-settings sliders intercepts the interaction and opens the retro Flappy Bird luminance cabinet.
-   - **Score 1 = +1% Brightness**: The user must endure 100 consecutive pipe clearances to attain 100% full illumination.
-   - **Catastrophic Crash Penalty**: Crashing instantly plunges the screen back into 10% darkness alongside an insulting taunt.
-5. **The Punchline**: If anyone miraculously fulfills all 14 criteria and submits, the system pretends to verify before delivering the ultimate troll: *"Token allocation exhausted 0.02s ago. Please try again with a 75-digit password."*
+## 2. Target User Experience (6 Sequential Phases)
+1. **Phase 1: The Void (Blank White Page)**:
+   - App launches into a completely empty pure-white canvas (`#ffffff`). No text, no buttons, no distractions.
+   - The emptiness builds anticipation for ~2.5 seconds.
+2. **Phase 2: The Hook (Bottom-Right Notification)**:
+   - An elegant system notification toast slides in from the bottom right: *"Free Claude Tokens Granted // Claim allocation"*.
+   - Clicking the notification advances the user into Phase 3.
+3. **Phase 3: The Application (Profile Application Page)**:
+   - A minimalist, Vercel-style developer application page: *"Apply for Claude 5.5 Fable Tokens"*.
+   - Displays developer handle, research organization, and technical allocation stats (10M context, 450 tok/s).
+   - An irresistible CTA button: `[Get Unlimited Access]`.
+4. **Phase 4: The Bulb Spotlight**:
+   - The page transitions to the login screen with an authentic hanging pixel-art bulb at the top.
+   - The bulb emits a bright downward conical light beam.
+   - **Only the login text inside the cone is visible**; the surroundings are occluded.
+   - After ~3.5 seconds, the bulb **switches off**, the light cone fades out, and the entire room plunges into pitch darkness.
+5. **Phase 5: The Darkness & Hardware Luminance Trap (Flappy Lumens)**:
+   - The screen is pitch black. In the top-right corner, **one glowing, lit button** pulses in the dark: `[💡 Earn Light (Flappy Bird)]`.
+   - Clicking it launches the retro Flappy Bird luminance arcade cabinet.
+   - **Death Score = Brightness %**: Whatever pipe score the player dies at becomes their permanent screen brightness (e.g., Score 42 = 42% Lux).
+   - **Admit Defeat Escape Hatch**: If the player cannot earn lumens or pass the pipes, an `[Admit Defeat]` button allows bypassing to 100% illumination via the emergency concession protocol.
+6. **Phase 6: The Password Gauntlet, Boss Interruption & Punchline**:
+   - The login password gauntlet renders at the user's earned brightness level (squinting if low score, daylight if high score).
+   - Requires fulfilling 14 absurd, contradictory cryptographic directives with progressive rule cascades and violent anti-paste locks.
+   - **The Top-of-Screen Guy Interruption & Click Battle**:
+     - As the player types their passphrase, a mysterious Overseer drops down and perches on top of the screen: *"HALT! Who authorized you to configure a 50-character passphrase?!"*
+     - Initiates a rapid **Blank White Screen Reflex Battle**: A stark pure-white screen opens with popping black dots.
+     - The player must rapidly neutralize 15 black dots within 8 seconds.
+     - **Victory**: Overseer is banished, returning player to their password.
+     - **Defeat & Proper Lose Screen**: If the timer expires, a dedicated, high-impact **Defeat Screen** displays diagnostic metrics (dots clicked, clicks per second, smug boss quote), offering instant rematch or return options.
+   - **The Punchline**: Submitting all 14 criteria verifies the handshake before delivering the ultimate HTTP 429 troll: *"All 200 Claude Fable 5.5 slots were claimed 0.038s ago while you were solving Rule 14."*
 
 ## 3. Success Criteria
 - Instantaneous, reactive validation with zero lag.
-- 100% strict black-and-white minimalist aesthetic conforming to `DESIGN.md`.
-- Unforgiving adherence to progressive rule cascades and anti-paste mechanics.
-- 60 FPS responsive HTML5 Canvas game loop with linear luminance synchronization and catastrophic crash reset.
-- Engaging, funny, and deeply infuriating user experience.
+- Sleek, premium Vercel-style engineering minimalism conforming to `Akagi201/longcipher-design` tokens in `DESIGN.md`.
+- Flawless sequential progression through all 6 phases.
+- Real-time luminance synchronization where Flappy Bird death score directly controls viewport brightness.
+- Engaging, hilarious, and unforgettable user journey.

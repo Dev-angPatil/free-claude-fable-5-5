@@ -67,24 +67,9 @@ export const RULES: PasswordRule[] = [
   {
     id: 5,
     label: "Anti-Repetition Protocol",
-    description: "No repeated consecutive characters (e.g. 'aa', '33' are prohibited; Roman numeral sequence exempt) and no repeated 2-character tokens (e.g. 'abab').",
-    validator: (pw, ctx) => {
-      // Strip first occurrence of validated Roman numeral to exempt its internal repeats (e.g. 'II' in XVII)
-      const withoutRoman = ctx.todayRomanDate ? pw.replace(ctx.todayRomanDate, '') : pw;
-      if (/(.)\1/.test(withoutRoman)) return false;
-
-      // Disallow 3 consecutive identical characters anywhere
-      if (/(.)\1\1/.test(pw)) return false;
-
-      // Disallow duplicate 2-character bigrams anywhere in password
-      for (let i = 0; i < pw.length - 3; i++) {
-        const token = pw.slice(i, i + 2);
-        const remainder = pw.slice(i + 2);
-        if (remainder.includes(token)) return false;
-      }
-      return true;
-    },
-    hint: () => "Ensure characters and 2-character bigrams do not repeat (calendar Roman numeral sequence is exempt).",
+    description: "Repeated letters are allowed. Maximum 3 identical consecutive characters.",
+    validator: (pw) => pw.length > 0 && !/(.)\1\1\1/.test(pw),
+    hint: () => "Repeated letters and bigrams are allowed (up to 3 in a row).",
   },
   {
     id: 6,

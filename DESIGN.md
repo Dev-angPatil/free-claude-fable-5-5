@@ -1,38 +1,52 @@
-# Design System: RawBlock Neo-Brutalist (Strict High-Contrast)
+# Design System: Vercel Minimalist (Shadow-as-Border & Precision Dark)
 
-Adopted from `chef/rawblock` on [designmd.ai](https://designmd.ai/chef/rawblock).
+Adopted from `Akagi201/longcipher-design` on [designmd.ai](https://designmd.ai/Akagi201/longcipher-design).
 
-## 1. Design Philosophy: Structural Anti-Design & Extreme Friction
-RawBlock strips interfaces down to their structural bones. There are no rounded corners (0px border-radius everywhere), no drop-shadows, and no decorative mid-tones. Visual hierarchy is achieved exclusively through **border weight (3px to 5px)**, **scale contrast**, and **high-impact typography**.
+## 1. Visual Theme & Philosophy: Infrastructure Made Invisible
+The interface follows a philosophy of restrained engineering minimalism. Rather than aggressive, harsh borders or overbearing decoration, every element earns its pixel through micro-contrast softness, gallery-like emptiness, and precision alignment.
 
-This raw, brutalist architectural aesthetic perfectly complements the uncompromising, hard psychological rage-bait nature of the Claude Fable 5.5 onboarding gauntlet.
+### Key Principles:
+- **Shadow-as-Border Technique**: Instead of harsh solid 3px-5px borders, subtle 1px semi-transparent shadow rings (`box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08)`) and fine `border-neutral-800` define boundaries with crisp elegance.
+- **Micro-Contrast Surface Layering**:
+  - Deep Canvas: `#000000`
+  - Base Surface (Subtle Dark): `#0a0a0a`
+  - Elevated Card: `#121212`
+  - Interactive Hover / Focus: `#1a1a1a`
+- **Concentric Rounded Corners**:
+  - `6px` (`rounded-md`): Buttons, inputs, chips, badges
+  - `8px` (`rounded-lg`): Inner cards, dialog rows
+  - `12px` (`rounded-xl`): Outer modals, master containers
+- **Typography**:
+  - `Inter` / `Geist Sans` for clean, high-density UI text with tight letter-spacing (`tracking-tight`).
+  - `JetBrains Mono` / `Geist Mono` for cryptographic salts, telemetry, and numerical statistics (`tabular-nums`).
 
 ## 2. Color Tokens
-- **Canvas / Background**: `#000000` (Pure Black)
-- **Inverted Canvas / Foreground**: `#FFFFFF` (Pure High-Contrast White)
-- **Surface Level 1**: `#111111` (Structural Block Fill)
-- **Surface Sunken**: `#181818` (Input Wells)
-- **Surface Elevated**: `#1E1E1E` (Active Directive Card)
-- **Borders**:
-  - `border-thin`: `1px solid #3A3A3C`
-  - `border-thick`: `3px solid #FFFFFF` (Standard element boundary)
-  - `border-heavy`: `5px solid #FFFFFF` (Active target focus & CTA)
-- **Text Primary**: `#FFFFFF`
-- **Text Secondary**: `#D1D5DB`
-- **Text Muted**: `#9CA3AF`
+- **Canvas / Background**: `#000000` (OLED Dark Canvas)
+- **Canvas Light**: `#ffffff` (Pure White for Initial Void & Notification)
+- **Surface Base**: `#0a0a0a`
+- **Surface Elevated**: `#121212`
+- **Surface Highlight**: `#181818`
+- **Surface Interactive**: `#222222`
+- **Borders & Rings**:
+  - `border-subtle`: `rgba(255, 255, 255, 0.08)` (1px ring)
+  - `border-default`: `rgba(255, 255, 255, 0.14)`
+  - `border-active`: `rgba(255, 255, 255, 0.35)`
+- **Text Tokens**:
+  - Primary: `#ededed` (Soft White)
+  - Secondary: `#a1a1aa` (Zinc-400)
+  - Muted: `#71717a` (Zinc-500)
+- **Accents**:
+  - Primary / Interactive CTA: `#ffffff`
+  - Telemetry Violet / Accent: `#6366f1`
+  - Signal Amber / Warning: `#f59e0b`
+  - Signal Emerald / Pass: `#10b981`
+  - Signal Crimson / Error: `#ef4444`
 
-## 3. Typography Scale & Fonts
-- **Headline Font**: `Archivo Black` (uppercase, ultra-bold, high authority)
-- **Mono Font**: `Space Mono` (15px, mechanical, cryptographic telemetry)
-- **Body Font**: `Work Sans` (14-16px, high-legibility clean grotesque)
-
-## 4. Component Rules
-- **Border Radius**: `0px` (`rounded-none`) across all cards, buttons, inputs, tags, and progress bars. Absolutely zero rounding.
+## 3. Component Conventions
 - **Buttons**:
-  - Primary: `#FFFFFF` fill with `#000000` text, `3px solid #FFFFFF` border, uppercase tracking. Inverts on hover to black fill with 5px white border.
-  - Secondary: `#181818` fill with `3px solid #3A3A3C` border, `#FFFFFF` text.
+  - Primary: Solid `#ffffff` with `#000000` text, 6px radius, hover opacity 90%, active scale 98%.
+  - Secondary: `#121212` background, 1px subtle border, `#ededed` text, hover `#1a1a1a`.
 - **Inputs**:
-  - `Space Mono` 16px font, `#181818` background, `3px solid #FFFFFF` focus border, 0px radius.
-- **Directives Panel**:
-  - High-visibility cards with 3px thick borders.
-  - Active Directive: `3px solid #FFFFFF` with inverted `[CURRENT OBJECTIVE]` badge and highlighted monospace hints.
+  - `#0a0a0a` background, 1px `border-neutral-800`, 6px radius, focus ring `ring-1 ring-white/40`.
+- **Modals & Cards**:
+  - 12px radius, `#0a0a0a` body with layered `#121212` children, 1px subtle border ring, smooth backdrops.

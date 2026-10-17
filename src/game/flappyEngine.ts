@@ -31,15 +31,16 @@ export class FlappyEngine {
   private state: GameState = 'idle';
   private frameCount = 0;
 
-  // World Constants
+  // World Constants (Re-balanced for smooth, accessible gameplay)
   private readonly width = 400;
   private readonly height = 560;
-  private readonly gravity = 0.44;
-  private readonly jumpForce = -7.4;
-  private readonly pipeSpeed = 2.4;
-  private readonly pipeGap = 136;
+  private readonly gravity = 0.36;
+  private readonly jumpForce = -6.4;
+  private readonly pipeSpeed = 1.95;
+  private readonly pipeGap = 162;
   private readonly pipeWidth = 56;
-  private readonly pipeInterval = 95; // frames between pipes
+  private readonly pipeInterval = 100; // frames between pipes
+  public showHitboxes = false;
 
   // Entities
   private bird = {
@@ -202,6 +203,11 @@ export class FlappyEngine {
     this.onStateChange(newState);
   }
 
+  public toggleHitboxes(): boolean {
+    this.showHitboxes = !this.showHitboxes;
+    return this.showHitboxes;
+  }
+
   public flap() {
     if (this.state === 'idle') {
       this.setState('playing');
@@ -292,50 +298,66 @@ export class FlappyEngine {
           }
         }
 
-        // Collision detection (Forgiving AABB Hitbox - smaller than visual sprite)
-        const hitboxInsetX = 9; // Inset 9px from left and right
-        const hitboxInsetY = 7; // Inset 7px from top and bottom
-        const birdLeft = this.bird.x - this.bird.width / 2 + hitboxInsetX;
-        const birdRight = this.bird.x + this.bird.width / 2 - hitboxInsetX;
-        const birdTop = this.bird.y - this.bird.height / 2 + hitboxInsetY;
-        const birdBottom = this.bird.y + this.bird.height / 2 - hitboxInsetY;
+        // Dual-circle collision primitives (torso circle + rotation-aware head/beak circle)
+        const bodyRadius = 8.5;
+        const headRadius = 5.5;
+        const bodyCircle = {
+          x: this.bird.x - 2,
+          y: this.bird.y,
+          r: bodyRadius,
+        };
+        const headCircle = {
+          x: this.bird.x + Math.cos(this.bird.rotation) * 6,
+          y: this.bird.y + Math.sin(this.bird.rotation) * 6,
+          r: headRadius,
+        };
 
-        const pipeLeft = pipe.x + 2; // Forgiving 2px pipe margin
-        const pipeRight = pipe.x + this.pipeWidth - 2;
+        // Pipe collision boxes (with forgiving 3px vertical lip margin and 1px side inset)
+        const pipeColX = pipe.x - 1;
+        const pipeColW = this.pipeWidth + 2;
 
-        // Inside horizontal pipe slice
-        if (birdRight > pipeLeft && birdLeft < pipeRight) {
-          // Hits top pipe
-          if (birdTop < pipe.topHeight) {
-            this.triggerCrash();
-            return;
-          }
-          // Hits bottom pipe
-          if (birdBottom > this.height - pipe.bottomHeight) {
-            this.triggerCrash();
-            return;
-          }
+        // Top pipe AABB
+        const topPipeH = Math.max(0, pipe.topHeight - 3); // 3px forgiving vertical margin at entrance
+        const hitTop =
+          this.checkCircleRect(bodyCircle.x, bodyCircle.y, bodyCircle.r, pipeColX, 0, pipeColW, topPipeH) ||
+          this.checkCircleRect(headCircle.x, headCircle.y, headCircle.r, pipeColX, 0, pipeColW, topPipeH);
+
+        if (hitTop) {
+          this.triggerCrash();
+          return;
+        }
+
+        // Bottom pipe AABB
+        const bottomPipeY = this.height - pipe.bottomHeight + 3; // 3px forgiving vertical margin at entrance
+        const bottomPipeH = pipe.bottomHeight;
+        const hitBottom =
+          this.checkCircleRect(bodyCircle.x, bodyCircle.y, bodyCircle.r, pipeColX, bottomPipeY, pipeColW, bottomPipeH) ||
+          this.checkCircleRect(headCircle.x, headCircle.y, headCircle.r, pipeColX, bottomPipeY, pipeColW, bottomPipeH);
+
+        if (hitBottom) {
+          this.triggerCrash();
+          return;
         }
       }
 
       // Remove offscreen pipes
       this.pipes = this.pipes.filter((p) => p.x + this.pipeWidth > -50);
 
-      // Floor & ceiling collisions (with forgiving inset)
-      if (this.bird.y + this.bird.height / 2 - 6 >= this.height - 12) {
-        this.bird.y = this.height - 12 - (this.bird.height / 2 - 6);
+      // Floor & ceiling collisions (based on body circle radius: 8.5px)
+      if (this.bird.y + 8.5 >= this.height - 12) {
+        this.bird.y = this.height - 12 - 8.5;
         this.triggerCrash();
         return;
       }
-      if (this.bird.y - this.bird.height / 2 <= 0) {
-        this.bird.y = this.bird.height / 2;
+      if (this.bird.y - 8.5 <= 0) {
+        this.bird.y = 8.5;
         this.bird.vy = 0;
       }
     }
 
     if (this.state === 'gameover') {
       // Continue gravity until bird hits floor
-      if (this.bird.y + this.bird.height / 2 < this.height - 12) {
+      if (this.bird.y + 8.5 < this.height - 12) {
         this.bird.vy += this.gravity * 1.5;
         this.bird.y += this.bird.vy;
         this.bird.rotation = Math.min(Math.PI / 2, this.bird.rotation + 0.1);
@@ -406,6 +428,11 @@ export class FlappyEngine {
       ctx.font = '12px "Space Mono", monospace';
       ctx.fillStyle = '#A0A0A0';
       ctx.fillText(`BRIGHTNESS: ${Math.min(100, 10 + this.score)}%`, width / 2, 85);
+    }
+
+    // Optional Hitbox Overlay
+    if (this.showHitboxes) {
+      this.drawDebugHitboxes();
     }
   }
 
@@ -502,4 +529,86 @@ export class FlappyEngine {
 
     ctx.restore();
   }
+
+  // Fast Circle-to-AABB collision resolution
+  private checkCircleRect(
+    cx: number,
+    cy: number,
+    r: number,
+    rx: number,
+    ry: number,
+    rw: number,
+    rh: number
+  ): boolean {
+    if (rh <= 0 || rw <= 0) return false;
+    const closestX = Math.max(rx, Math.min(cx, rx + rw));
+    const closestY = Math.max(ry, Math.min(cy, ry + rh));
+    const dx = cx - closestX;
+    const dy = cy - closestY;
+    return dx * dx + dy * dy < r * r;
+  }
+
+  // Visualizer for debugging & proving forgiving hitbox alignment
+  private drawDebugHitboxes() {
+    const { ctx } = this;
+    ctx.save();
+
+    // Body & head circle definitions
+    const bodyCircle = {
+      x: this.bird.x - 2,
+      y: this.bird.y,
+      r: 8.5,
+    };
+    const headCircle = {
+      x: this.bird.x + Math.cos(this.bird.rotation) * 6,
+      y: this.bird.y + Math.sin(this.bird.rotation) * 6,
+      r: 5.5,
+    };
+
+    // Draw Pipe Hitbox Outlines (Neon Green, dashed)
+    ctx.strokeStyle = '#00FF66';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 2]);
+
+    for (const pipe of this.pipes) {
+      const pipeColX = pipe.x - 1;
+      const pipeColW = this.pipeWidth + 2;
+      const topPipeH = Math.max(0, pipe.topHeight - 3);
+      const bottomPipeY = this.height - pipe.bottomHeight + 3;
+
+      // Top pipe collision box
+      ctx.strokeRect(pipeColX, 0, pipeColW, topPipeH);
+      // Bottom pipe collision box
+      ctx.strokeRect(pipeColX, bottomPipeY, pipeColW, pipe.bottomHeight);
+    }
+
+    // Draw Bird Hitbox Circles (Electric Magenta)
+    ctx.strokeStyle = '#FF0055';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([]);
+
+    // Torso Circle
+    ctx.beginPath();
+    ctx.arc(bodyCircle.x, bodyCircle.y, bodyCircle.r, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Head / Beak Circle
+    ctx.beginPath();
+    ctx.arc(headCircle.x, headCircle.y, headCircle.r, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Center pivot dot
+    ctx.fillStyle = '#00FFFF';
+    ctx.fillRect(this.bird.x - 1, this.bird.y - 1, 2, 2);
+
+    // Floor collision reference
+    ctx.strokeStyle = '#FFCC00';
+    ctx.beginPath();
+    ctx.moveTo(0, this.height - 12);
+    ctx.lineTo(this.width, this.height - 12);
+    ctx.stroke();
+
+    ctx.restore();
+  }
 }
+

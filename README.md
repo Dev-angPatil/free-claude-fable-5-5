@@ -1,31 +1,39 @@
 # ⚡ FREE CLAUDE FABLE 5.5 UNLIMITED
 
 > **"Congratulations! You have been selected for unlimited research access to Claude 5.5 Fable."**
-> *(Terms and conditions apply. Cryptographic security verification required.)*
+> *(Terms and conditions apply. Hardware luminance and cryptographic security verification required.)*
 
-A high-contrast, psychological rage bait web application built with **React 19**, **TypeScript**, and **Tailwind CSS**, designed in strict accordance with the **RawBlock Neo-Brutalist** design system ([`chef/rawblock`](https://designmd.ai/chef/rawblock)).
+A high-precision, psychological rage bait web application built with **React 19**, **TypeScript**, and **Tailwind CSS**, designed in strict accordance with the **Vercel Minimalist** design system ([`Akagi201/longcipher-design`](https://designmd.ai/Akagi201/longcipher-design) from DESIGNmd).
 
 ---
 
-## ⚡ System Architecture & Psychological Friction Engine
+## ⚡ The 6-Phase Experiential Journey
 
 A satirical interactive experience designed to deconstruct developer FOMO around frontier AI model releases:
-1. **The Deceptive Lure (`InitialLure.tsx`)**: A clean, stark pure-white landing page announcing an exclusive, free research-tier grant for Anthropic's unreleased Claude 5.5 Fable model (10,000,000 token context, 450 tok/s).
-2. **Two-Column Vault Matrix (`RageProfileModal.tsx`)**:
-   - **Center Viewport (7 Cols)**: Credential registration, large monospace passphrase input, live entropy telemetry, and submission trigger.
-   - **Right Telemetry Sidebar (5 Cols)**: Real-time progressive directives stack that auto-scrolls to unveil newly unlocked rules as earlier criteria are met.
-3. **Clipboard Sabotage Interceptor**: Hard-coded DOM event trapping on `onPaste`, `onDrop`, and keyboard shortcuts (`Ctrl+V`, `Cmd+V`), triggering violent haptic visual shakes and insulting security reprimands.
-4. **14 Cascading Progressive Directives (`passwordRules.ts`)**:
-   - Minimum 50-digit/character total length requirement.
-   - **Letter-to-Number Quarantine**: No digit may directly follow any letter.
-   - **Anti-Repetition Protocol**: No consecutive identical characters and no duplicate 2-character bigrams (with contextual exemption for today's certified Roman numeral date).
-   - **Temporal Roman Handshake**: Must include today's UTC calendar day in Roman numerals (e.g. `XVII`).
-   - **Digit Summing Verification**: The sum of all individual digits in the passphrase must equal exactly `29`.
-   - **Chemistry Verification**: Must contain the chemical symbol of an alkali metal (`Li`, `Na`, `Rb`, `Cs`, `Fr`).
-   - **Time-Sensitive UTC Pulse**: Must contain the current 2-digit UTC minute (expires every 60 seconds).
-   - **Parity Isolation**: No vowels adjacent to even numbers.
-   - **Bicameral Equilibrium**: Exactly equal counts of uppercase and lowercase letters.
-5. **The Ultimate Troll (`SuccessTroll.tsx`)**: If a user somehow satisfies all 14 criteria, celebratory confetti bursts before delivering an `HTTP 429-RAGE` notification: informing them that all 200 token slots were claimed 0.04 seconds earlier by automated trading bots, and waitlisting them for *Claude 6.0 Mythic*.
+
+1. **Phase 1: The Void (`BlankVoid.tsx`)**:
+   - Launches onto a completely empty pure-white canvas (`#ffffff`). No UI, no header, no buttons.
+   - Silence and emptiness builds curiosity for 2.4 seconds.
+2. **Phase 2: The Hook (`NotificationToast.tsx`)**:
+   - A sleek system notification slides in from the bottom right: *"Free Claude Tokens Granted // Special developer research tier allocation ready to claim."*
+   - Clicking opens the profile application.
+3. **Phase 3: The Application (`ProfileApplicationPage.tsx`)**:
+   - A clean, modern Vercel-style developer registration form: *"Apply for Claude 5.5 Fable Tokens"*.
+   - Pre-fills developer identity and details allocation metrics (10M context, 450 tok/s).
+   - Clicking `[Get Unlimited Access]` transitions to the login gate.
+4. **Phase 4: The Bulb Spotlight (`BulbSpotlightLogin.tsx`)**:
+   - The user enters the login room with a hanging pixel-art bulb (`bulb-on.png`) suspended at top-center.
+   - The bulb projects a **conical light beam downward**. Only the text and form elements inside the beam are visible; outside is dark.
+   - After ~3.5 seconds, the bulb **switches off** (`bulb-off.png`), the conical beam fades out, and the screen plunges into pitch darkness.
+5. **Phase 5: The Darkness & Hardware Luminance Trap (`DarknessPhase.tsx`)**:
+   - The room is dark. In the top-right corner, **one glowing, lit button** pulses: `[💡 Earn Light (Flappy Bird)]`.
+   - Clicking opens the Flappy Bird arcade cabinet (`FlappyBrightnessModal.tsx`).
+   - **Death Score = Screen Brightness**: Whatever pipe score you crash at becomes your permanent screen brightness (e.g., Score 42 = 42% Lux).
+   - **Admit Defeat Escape Hatch**: If you cannot pass pipes, an `[Admit Defeat]` button permits bypassing to 100% illumination upon entering the emergency concession confession (`SkipPhaseModal.tsx`).
+6. **Phase 6: The Password Gauntlet & Punchline (`RageProfileModal.tsx`)**:
+   - The password setting interface renders at the user's earned brightness level (squinting in dim light if low score, daylight if high score).
+   - Features 14 cascading progressive rules (50-character minimum, alkali metals, Roman numerals, UTC minute sync, anti-paste locks).
+   - **The Punchline (`SuccessTroll.tsx`)**: Miraculously passing all 14 criteria verifies the handshake before delivering an `HTTP 429-RAGE` notification: informing the user that all 200 token slots were claimed 0.038 seconds earlier by an automated trading bot in Zurich, waitlisting them for *Claude 6.0 Mythic*.
 
 ---
 
@@ -35,17 +43,19 @@ A satirical interactive experience designed to deconstruct developer FOMO around
 - [Node.js](https://nodejs.org/) (v18+)
 - `npm` or `pnpm`
 
-### Installation
+### Installation & Running
 ```bash
-# Clone the repository
-git clone https://github.com/Dev-angPatil/free-claude-fable-5-5.git
-cd free-claude-fable-5-5
+# Navigate to project repository
+cd "/home/deu/Coding Repos/free-claude-fable-5-5"
 
 # Install dependencies
 npm install
 
 # Start local development server
 npm run dev
+
+# Build production bundle
+npm run build
 ```
 
 Visit `http://localhost:5173` in your browser.
@@ -54,25 +64,21 @@ Visit `http://localhost:5173` in your browser.
 
 ## 🛠️ Tech Stack & Design Tokens
 - **Framework**: React 19 + Vite + TypeScript (Strict Type Safety)
-- **Design System**: RawBlock Neo-Brutalist (`DESIGN.md`, based on [`chef/rawblock`](https://designmd.ai/chef/rawblock))
-- **Typography**: Archivo Black (Headlines), Space Mono (Code & Directives), Work Sans (Body)
-- **Geometry**: 0px border-radius (`rounded-none`), 3px–5px thick structural borders, zero drop-shadows
-- **Icons**: Lucide React
-- **Effects**: Canvas Confetti & CSS Haptic Shakes
+- **Design System**: Vercel Minimalist (`DESIGN.md`, based on [`Akagi201/longcipher-design`](https://designmd.ai/Akagi201/longcipher-design) from DESIGNmd)
+- **Typography**: Inter (Body & UI with tight tracking), JetBrains Mono (Code, Telemetry & Directives)
+- **Techniques**: Shadow-as-border (`box-shadow: 0 0 0 1px rgba(255,255,255,0.08)`), concentric radii (6px, 8px, 12px, 16px), layered dark surfaces (`#000000`, `#0a0a0a`, `#121212`, `#181818`)
 
 ---
 
-## 📜 Prompt Engineering & Iteration Report
+## 📋 Record of Prompts & Outcomes
 
-This system was conceived, architected, and iteratively refined using rigorous **Prompt Engineering Frameworks** (Role-Task-Context-Constraint framing, Socratic iterative elicitation, formal constraint satisfiability verification, and ergonomic refactoring). Below is the comprehensive prompt audit trail detailing each engineering prompt formulation and its technical outcome:
-
-| Phase | Prompt Engineering Methodology | Formulated Architectural Prompt | Technical Outcome & Deliverables |
-| :--- | :--- | :--- | :--- |
-| **01: Core Architecture & Adversarial Verification Engine** | **Role-Task-Constraint (RTC) Framing + Socratic Elicitation (`/grill-me`)** | *"Act as a Principal HCI Security Architect. Design and scaffold a psychological friction web application that deconstructs developer AI FOMO by masquerading as an exclusive compute gateway ('FREE CLAUDE FABLE 5.5 UNLIMITED'). Implement an adversarial authentication pipeline requiring a 50-digit/character master passphrase governed by a progressive cascade validator (14 non-monotonic, contradictory constraints including prime digit sums, atomic element matching, UTC temporal sync, and letter-to-number isolation). Enforce hardware-level interaction constraints by neutralizing clipboard injection (blocking paste/drop events with haptic visual shakes and gaslighting telemetry). Establish a public GitHub repository, strict documentation system (VISION.md, ARCHITECTURE.md, DESIGN.md), and initiate interactive design alignment via `/grill-me`."* | • Initial project scaffolding (`Vite`, `React 19`, `TypeScript`).<br>• Core design tokens defined in `DESIGN.md`.<br>• Pure functional rule engine (`src/rules/passwordRules.ts`).<br>• Monolithic credential interface with clipboard trapping (`src/components/RageProfileModal.tsx`).<br>• Initial lure state machine (`src/components/InitialLure.tsx`).<br>• Public GitHub repository initialized and pushed. |
-| **02: Ergonomic Matrix Refactoring & Spatial Hierarchy Optimization** | **Interface-First Spatial Decomposition & Cognitive Load Balancing** | *"Conduct an ergonomic audit of the single-column authentication layout. Decompose the viewport into an asynchronous two-column interaction matrix: anchor the primary credential inputs (developer identity, master passphrase, entropy feedback, submission CTA) in a dominant central viewport (7-column desktop grid), while decoupling active constraints into a persistent, auto-scrolling telemetry sidebar (5-column desktop grid). Elevate visual affordances for the currently blocking objective with high-contrast active targeting, and introduce visual counters for queued/locked directives."* | • 12-column responsive grid separating profile entry from live rule monitoring.<br>• Real-time auto-scrolling directive stack tracking newly unlocked criteria.<br>• Prominent `[CURRENT OBJECTIVE]` target indicator with high-visibility white borders.<br>• Enhanced typography scaling and compliance percentage telemetry. |
-| **03: Constraint Satisfiability Verification & Neo-Brutalist Design Overhaul** | **Formal Logic Proofing + Neo-Brutalism Design Token Migration** | *"Execute formal constraint satisfiability verification across intersecting rule dependencies. Resolve the semantic collision between Rule 5 (Anti-Repetition Protocol) and Rule 6 (Temporal Roman Handshake) where calendar dates with repeated numerals (e.g., 'II' in XVII) induce an unsolvable deadlock, by isolating and context-exempting legitimate Roman sequences while preserving strict bigram uniqueness. Concurrently, elevate the design system from subtle dark minimalism to chef's RawBlock neo-brutalist standard (0px border-radii, 3px-5px thick structural borders, Archivo Black & Space Mono typography) to maximize visual contrast, friction, and aesthetic authority."* | • Mathematical resolution of Rule 5 and Rule 6 dependency collision via scoped Roman numeral token exemption.<br>• Migration to `chef/rawblock` on designmd.ai (`DESIGN.md`, `tailwind.config.js`).<br>• Integration of Archivo Black, Space Mono, and Work Sans Google Fonts.<br>• High-visibility brutalist borders, inverted hover states, and zero-drop-shadow geometry. |
-
----
-
-## 📄 License
-MIT License. Built for psychological endurance and UX testing.
+| Prompt | Outcome |
+| :--- | :--- |
+| *"What design.md file are we using lets use a standard visually good one so it looks better. Keep it minimalist but visually better"* | Identified existing RawBlock neo-brutalist system; researched DESIGNmd library; presented top minimalist systems; recommended `Akagi201/longcipher-design` (Vercel engineering minimalist). |
+| *"Use the recommended. The core features are good. Now heres how i want the experiennce to be. First startwith completely blank white page, then from bottom right you get a notification, free claude tokesn. Once you press them it open the profile page which is apply for fable 5 tokens, when yoy press get. It will open the login page, Then there is a bulb on top(png uploaded) ,which has light shown in a conical down and only that text is visible. Then the bulb switches off making everything dark then you have one button on top right which is lit when you press that it opens flappy bird. Whatever score you die at is the brightness. If you arent able to do it there should be an admit defeat button. Then the login page password setting. Create the implementation plan that explains this exactly"* | Formulated and approved detailed 6-phase implementation plan. |
+| *"Proceed"* | Executed full transformation: extracted and created transparent `bulb-on.png` and `bulb-off.png`; adopted `Akagi201/longcipher-design` tokens into `DESIGN.md`, `tailwind.config.js`, and `index.html`; built `BlankVoid.tsx`, `NotificationToast.tsx`, `ProfileApplicationPage.tsx`, `BulbSpotlightLogin.tsx`, and `DarknessPhase.tsx`; refactored `FlappyBrightnessModal.tsx` for death score = brightness %; updated `RageProfileModal.tsx`, `SkipPhaseModal.tsx`, and `SuccessTroll.tsx`; verified clean `tsc` and production build; updated documentation. |
+| *"RULE 5 Anti-Repetition Protocol... RULE 6 Temporal Roman Handshake... this issue is still there just allow repeated letters. Make it fast"* | Updated Rule 5 to allow repeated letters and bigrams (only preventing 4+ identical consecutive chars); eliminated the slow nested bigram scan to make evaluation instantaneous. |
+| *"What i need to do is one small change, Get light back 100% should be at top right, and play flappy bird to get light should be add middle. Currently The UI has too much clutter run clutter removal on login page"* | Repositioned "Get light back 100%" to top right and "Play Flappy Bird to get light" to central focus in `DarknessPhase.tsx`; ran complete clutter removal on `RageProfileModal.tsx` by removing redundant identity inputs, double headers, nested subcard borders, and heavy footers. |
+| *"we need to make one feature feature while doing password game, a guy would interrupt you by standing on top of screen. You need to defeat him in battle, something like a click battle it will open a blank white screen with black dots appearing if you are able to fastly press a certian number in an amount of time he will go away or you lose.Create a proper lose screen"* | Implemented Top-of-Screen Boss Interruption: Created `ScreenTopGuy.tsx` (animated overseer perched on top edge with dynamic speech bubbles and battle countdown), `ClickBattleArena.tsx` (stark blank-white reflex arena requiring 15 black dot eliminations within 8.0s with burst particles and live telemetry), and `DefeatLoseScreen.tsx` (proper game-over screen with smug dialogue, performance telemetry—CPS, compliance, time—and instant rematch/resume actions); integrated into `RageProfileModal.tsx`. |
+| *"The guy should appear after you have done like 6,7 rules and he should be on top of screen"* | Adjusted trigger threshold: Guy now drops down specifically after user passes 6 rules (`passedRulesCount >= 6`); enhanced top-of-screen ledge styling with an official alert bar (`ANTHROPIC OVERSEER BREACH // TOP OF SCREEN`); portaled `ScreenTopGuy`, `ClickBattleArena`, and `DefeatLoseScreen` to `document.body` via `createPortal` to anchor them at the physical viewport ceiling without interference from CSS brightness filters. |
+| *"git push once done"* | Committed all updates and pushed to remote master repository. |

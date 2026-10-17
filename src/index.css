@@ -13,21 +13,21 @@
   }
 }
 
-/* Custom scrollbar in dark Electric Volt style */
+/* Subtle modern scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2C2C2E;
-  border-radius: 0px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5C5E62;
+  background: rgba(255, 255, 255, 0.25);
 }
